@@ -12,6 +12,9 @@ struct ParallelTalkCardView: View {
     let session: Session
 
     var body: some View {
+        let talk = viewModel.talkFrom(talkID: talkID)
+        let isFav = viewModel.isFavourite(talk: talk)
+
         NavigationLink(value: TalkReference(talkID: talkID, session: session)) {
             VStack(alignment: .leading, spacing: 0) {
                 SessionTypeBar(sessionType: session.sessionType)
@@ -31,7 +34,7 @@ struct ParallelTalkCardView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        FavouriteButtonView(talk: viewModel.talkFrom(talkID: talkID))
+                        FavouriteButtonView(talk: talk)
                     }
                 }
                 .padding()
@@ -41,8 +44,8 @@ struct ParallelTalkCardView: View {
             .clipShape(.rect(cornerRadius: 10))
         }
         .accessibilityLabel("\(session.sessionType.displayName): \(viewModel.talkTitleFrom(talkID: talkID)), by \(viewModel.speakersFrom(talkID: talkID)), \(viewModel.locationNameFrom(talkID: talkID))")
-        .accessibilityAction(named: viewModel.isFavourite(talk: viewModel.talkFrom(talkID: talkID)) ? "Remove from favourites" : "Add to favourites") {
-            let talk = viewModel.talkFrom(talkID: talkID)
+        .accessibilityInputLabels([viewModel.talkTitleFrom(talkID: talkID)])
+        .accessibilityAction(named: isFav ? "Remove from favourites" : "Add to favourites") {
             if viewModel.isFavourite(talk: talk) {
                 viewModel.removeFavourite(talk: talk)
             } else {
