@@ -1,0 +1,32 @@
+MythConf/MythConf26/Speakers/SpeakerDetailView.swift
+  bb9dda05c6a878ec 23,36,43,50
+MythConf/MythConf26/Speakers/SpeakerRowView.swift
+  bb9dda05c6a878ec 24
+MythConf/MythConf26/Speakers/SocialLinksView.swift
+  bb9dda05c6a878ec 23
+MythConf/MythConf26/Programme/SessionDetailView.swift
+  bb9dda05c6a878ec 21,26,38,43
+MythConf/MythConf26/Favourites/FavouriteButtonView.swift
+  bb9dda05c6a878ec 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "ab83f06e720adb0fa0c54be347ed06b87680f4d6",
+  "prompts": {
+    "bb9dda05c6a878ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d480132f-e169-49f2-a241-07dd5ccaf0ee",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Maria Kharybina",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 1,
+      "accepted_lines": 11,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gousto.info/cas/e65e339e7606931d1d7aaf278d57b3c0e93cf97236cff104bb470af1b42b6615"
+    }
+  }
+}
