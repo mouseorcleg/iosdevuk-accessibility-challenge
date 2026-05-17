@@ -39,5 +39,7 @@ PROJECT_OVERVIEW.md
 
 # Local-only Claude Code skills and installer artefacts
 .claude/skills/
+.claude/settings.local.json
+.claude/worktrees/
 .agents/
 skills-lock.json
