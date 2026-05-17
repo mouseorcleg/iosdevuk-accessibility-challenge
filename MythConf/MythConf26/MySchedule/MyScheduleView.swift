@@ -27,9 +27,11 @@ struct MyScheduleView: View {
                                         ForEach(daySessions) { session in
                                             ParallelSessionsRowView(session: session)
                                             Divider()
+                                                .accessibilityHidden(true)
                                         }
                                     } header: {
                                         Text(dayHeader(for: daySessions))
+                                            .accessibilityAddTraits(.isHeader)
                                             .font(.headline)
                                             .bold()
                                             .frame(maxWidth: .infinity, alignment: .leading)

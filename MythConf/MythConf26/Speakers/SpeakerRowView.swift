@@ -27,6 +27,7 @@ struct SpeakerRowView: View {
                 }
             }
         }
+        .accessibilityElement(children: .combine)
     }
 }
 

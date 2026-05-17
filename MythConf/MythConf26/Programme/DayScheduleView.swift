@@ -19,6 +19,7 @@ struct DayScheduleView: View {
                         BreakRowView(session: session)
                     }
                     Divider()
+                        .accessibilityHidden(true)
                 }
             }
         }

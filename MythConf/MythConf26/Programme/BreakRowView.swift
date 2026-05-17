@@ -30,6 +30,16 @@ struct BreakRowView: View {
         .padding()
         .frame(maxWidth: .infinity)
         .background(session.sessionType.color.opacity(0.12))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(breakAccessibilityLabel)
+    }
+
+    private var breakAccessibilityLabel: String {
+        let timeLabel = "\(session.startTimeText) to \(session.endTimeText)"
+        if let talkID = session.contentIDs.first {
+            return "\(session.sessionType.displayName), \(timeLabel), in \(viewModel.locationNameFrom(talkID: talkID))"
+        }
+        return "\(session.sessionType.displayName), \(timeLabel)"
     }
 }
 
