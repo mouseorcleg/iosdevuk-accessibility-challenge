@@ -21,6 +21,7 @@ struct SpeakerRowView: View {
                     .bold()
                 if !speaker.speakerInfo.isEmpty {
                     Text(speaker.speakerInfo)
+                        .accessibilityLabel("Bio and sessions")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .lineLimit(2)

@@ -20,6 +20,7 @@ struct SpeakerDetailView: View {
 
                     VStack(alignment: .leading) {
                         Text(speaker.name)
+                            .accessibilityHidden(true)
                             .font(.title2)
                             .bold()
                         if !speaker.social.isEmpty {
@@ -32,18 +33,21 @@ struct SpeakerDetailView: View {
 
                 Divider()
                     .padding(.vertical)
+                    .accessibilityHidden(true)
 
                 // Bio
                 if !speaker.speakerInfo.isEmpty {
                     Text(speaker.speakerInfo)
                     Divider()
                         .padding(.vertical)
+                        .accessibilityHidden(true)
                 }
 
                 // Sessions
                 let speakerTalks = talksWithSessions()
                 if !speakerTalks.isEmpty {
                     Text("Sessions")
+                        .accessibilityAddTraits(.isHeader)
                         .font(.headline)
 
                     ForEach(speakerTalks, id: \.talkID) { item in
