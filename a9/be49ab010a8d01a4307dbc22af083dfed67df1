@@ -1,0 +1,24 @@
+MythConf/MythConf26/Programme/ParallelTalkCardView.swift
+  bb9dda05c6a878ec 15-17,37,47-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "a9be49ab010a8d01a4307dbc22af083dfed67df1",
+  "prompts": {
+    "bb9dda05c6a878ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d480132f-e169-49f2-a241-07dd5ccaf0ee",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Maria Kharybina",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 3,
+      "accepted_lines": 6,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gousto.info/cas/97065840b5350d9374400aa0b9a48777cdaf34fbf71ff29fdd00640c5ad50d32"
+    }
+  }
+}
