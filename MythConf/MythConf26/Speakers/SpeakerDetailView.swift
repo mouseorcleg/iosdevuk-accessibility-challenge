@@ -74,9 +74,12 @@ struct SpeakerDetailView: View {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
+    let viewModel = ViewModel()
     NavigationStack {
-        SpeakerDetailView(speakerID: "")
+        SpeakerDetailView(speakerID: viewModel.confData.speakers.first!.id)
     }
-    .environment(ViewModel())
+    .environment(viewModel)
 }

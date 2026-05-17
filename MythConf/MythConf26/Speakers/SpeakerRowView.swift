@@ -29,3 +29,12 @@ struct SpeakerRowView: View {
         }
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    SpeakerRowView(speakerID: viewModel.confData.speakers.first!.id)
+        .environment(viewModel)
+        .padding()
+}

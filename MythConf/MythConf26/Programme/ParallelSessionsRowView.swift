@@ -22,3 +22,18 @@ struct ParallelSessionsRowView: View {
         .padding()
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    let session = viewModel.confData.sessions.flatMap { $0 }.first { $0.containsTalk }!
+    NavigationStack {
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ParallelSessionsRowView(session: session)
+            }
+        }
+    }
+    .environment(viewModel)
+}

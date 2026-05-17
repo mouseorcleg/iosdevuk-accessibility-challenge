@@ -24,3 +24,11 @@ struct FavouriteButtonView: View {
         .accessibilityLabel(viewModel.isFavourite(talk: talk) ? "Remove from favourites" : "Add to favourites")
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    FavouriteButtonView(talk: viewModel.confData.talks.first!)
+        .environment(viewModel)
+}

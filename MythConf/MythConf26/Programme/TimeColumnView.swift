@@ -25,3 +25,9 @@ struct TimeColumnView: View {
         .accessibilityLabel("Session start time \(startTime), session end time \(endTime)")
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    TimeColumnView(startTime: "10:00", endTime: "11:00")
+}

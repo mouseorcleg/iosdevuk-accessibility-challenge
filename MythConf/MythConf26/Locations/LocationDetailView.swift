@@ -41,3 +41,13 @@ struct LocationDetailView: View {
         .navigationBarTitleDisplayMode(.large)
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    NavigationStack {
+        LocationDetailView(locationID: viewModel.confData.locations.first!.id)
+    }
+    .environment(viewModel)
+}

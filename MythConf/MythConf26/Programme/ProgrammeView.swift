@@ -51,6 +51,8 @@ struct ProgrammeView: View {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     ProgrammeView()
         .environment(ViewModel())

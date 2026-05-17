@@ -54,7 +54,21 @@ struct MyScheduleView: View {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     MyScheduleView()
         .environment(ViewModel())
+}
+
+#Preview("With favourites") {
+    let viewModel: ViewModel = {
+        let vm = ViewModel()
+        vm.favouriteIds = Array(vm.confData.talks.prefix(3).map(\.id))
+        vm.saveFavourites()
+        vm.loadFavourites()
+        return vm
+    }()
+    MyScheduleView()
+        .environment(viewModel)
 }

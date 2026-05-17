@@ -29,6 +29,8 @@ struct SpeakersView: View {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     SpeakersView()
         .environment(ViewModel())

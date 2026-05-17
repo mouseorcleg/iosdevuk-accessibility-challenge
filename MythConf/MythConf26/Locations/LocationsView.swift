@@ -28,6 +28,8 @@ struct LocationsView: View {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     LocationsView()
         .environment(ViewModel())

@@ -25,3 +25,13 @@ struct TalkSummaryView: View {
         .padding(.vertical, 4)
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    let session = viewModel.confData.sessions.flatMap { $0 }.first { $0.containsTalk }!
+    TalkSummaryView(talkID: session.contentIDs.first!, session: session)
+        .environment(viewModel)
+        .padding()
+}

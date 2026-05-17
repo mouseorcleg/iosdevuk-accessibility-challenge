@@ -36,3 +36,13 @@ struct SocialLinksView: View {
         }
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    SocialLinksView(social: [
+        SocialItem(socialType: "twitter", socialLink: "https://twitter.com/example"),
+        SocialItem(socialType: "github", socialLink: "https://github.com/example"),
+        SocialItem(socialType: "website", socialLink: "https://example.com")
+    ])
+}

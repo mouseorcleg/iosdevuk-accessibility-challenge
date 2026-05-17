@@ -32,3 +32,12 @@ struct BreakRowView: View {
         .background(session.sessionType.color.opacity(0.12))
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    let breakSession = viewModel.confData.sessions.flatMap { $0 }.first { !$0.containsTalk }!
+    BreakRowView(session: breakSession)
+        .environment(viewModel)
+}

@@ -54,3 +54,19 @@ struct ParallelTalkCardView: View {
         .buttonStyle(.plain)
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    let session = viewModel.confData.sessions.flatMap { $0 }.first { $0.containsTalk }!
+    NavigationStack {
+        ScrollView {
+            LazyVStack {
+                ParallelTalkCardView(talkID: session.contentIDs.first!, session: session)
+                    .padding()
+            }
+        }
+    }
+    .environment(viewModel)
+}

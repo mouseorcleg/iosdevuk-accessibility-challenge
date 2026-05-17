@@ -52,3 +52,16 @@ struct SessionDetailView: View {
         }
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    let session = viewModel.confData.sessions.flatMap { $0 }.first { $0.containsTalk }!
+    NavigationStack {
+        SessionDetailView(
+            talkReference: TalkReference(talkID: session.contentIDs.first!, session: session)
+        )
+    }
+    .environment(viewModel)
+}

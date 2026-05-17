@@ -22,3 +22,10 @@ struct SpeakerPhotoView: View {
             .clipShape(.circle)
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    SpeakerPhotoView(speaker: viewModel.confData.speakers.first!, size: 80)
+}

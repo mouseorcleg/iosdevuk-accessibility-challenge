@@ -24,3 +24,13 @@ struct DayScheduleView: View {
         }
     }
 }
+
+// MARK: - Preview
+
+#Preview {
+    let viewModel = ViewModel()
+    NavigationStack {
+        DayScheduleView(sessions: viewModel.confData.sessions[1])
+    }
+    .environment(viewModel)
+}
