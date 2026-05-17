@@ -28,9 +28,10 @@ struct LocationDetailView: View {
                 )) {
                     Marker(location.name, coordinate: coordinate)
                 }
-                .frame(height: 400)
+                .frame(minHeight: 200, maxHeight: 400)
                 .clipShape(.rect(cornerRadius: 12))
                 .padding(.horizontal)
+                .accessibilityLabel("Map showing \(location.name)")
 
                 Text(location.placeDescription)
                     .foregroundStyle(.secondary)

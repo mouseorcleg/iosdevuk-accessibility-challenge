@@ -14,9 +14,7 @@ struct ParallelTalkCardView: View {
     var body: some View {
         NavigationLink(value: TalkReference(talkID: talkID, session: session)) {
             VStack(alignment: .leading, spacing: 0) {
-                session.sessionType.color
-                    .frame(height: 4)
-                    .accessibilityHidden(true)
+                SessionTypeBar(sessionType: session.sessionType)
 
                 VStack(alignment: .leading) {
                     Text(viewModel.talkTitleFrom(talkID: talkID))
