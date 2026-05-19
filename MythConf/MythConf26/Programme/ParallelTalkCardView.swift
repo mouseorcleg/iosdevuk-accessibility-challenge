@@ -8,8 +8,16 @@ import SwiftUI
 /// A card showing a single talk within a parallel-session slot.
 struct ParallelTalkCardView: View {
     @Environment(ViewModel.self) private var viewModel
+    @Environment(\.theme) private var theme
+    @Environment(\.colorScheme) private var colorScheme
     let talkID: UUID
     let session: Session
+
+    /// Tint opacity is bumped in Dark Mode so the themed colour stays
+    /// visible against a near-black background instead of fading out.
+    private var tintOpacity: Double {
+        colorScheme == .dark ? 0.25 : 0.1
+    }
 
     var body: some View {
         let talk = viewModel.talkFrom(talkID: talkID)
@@ -40,7 +48,7 @@ struct ParallelTalkCardView: View {
                 .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .background(session.sessionType.color.opacity(0.1), in: .rect(cornerRadius: 10))
+            .background(theme.color(for: session.sessionType).opacity(tintOpacity), in: .rect(cornerRadius: 10))
             .clipShape(.rect(cornerRadius: 10))
         }
         .accessibilityLabel("\(session.sessionType.displayName): \(viewModel.talkTitleFrom(talkID: talkID)), by \(viewModel.speakersFrom(talkID: talkID)), \(viewModel.locationNameFrom(talkID: talkID))")

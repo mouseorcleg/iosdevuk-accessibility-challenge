@@ -8,7 +8,15 @@ import SwiftUI
 /// A full-width row for non-session slots such as breaks, lunch, and social events.
 struct BreakRowView: View {
     @Environment(ViewModel.self) private var viewModel
+    @Environment(\.theme) private var theme
+    @Environment(\.colorScheme) private var colorScheme
     let session: Session
+
+    /// Tint opacity is bumped in Dark Mode so the themed colour stays
+    /// visible against a near-black background instead of fading out.
+    private var tintOpacity: Double {
+        colorScheme == .dark ? 0.3 : 0.12
+    }
 
     var body: some View {
         HStack {
@@ -29,7 +37,7 @@ struct BreakRowView: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(session.sessionType.color.opacity(0.12))
+        .background(theme.color(for: session.sessionType).opacity(tintOpacity))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(breakAccessibilityLabel)
     }

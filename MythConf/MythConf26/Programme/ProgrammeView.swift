@@ -8,6 +8,7 @@ import SwiftUI
 struct ProgrammeView: View {
     @Environment(ViewModel.self) private var viewModel
     @State private var selectedDayIndex = 0
+    @State private var showingSettings = false
 
     private var days: [[Session]] { viewModel.confData.sessions }
 
@@ -32,6 +33,24 @@ struct ProgrammeView: View {
             }
             .navigationTitle("MythConf 2026")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingSettings = true
+                    } label: {
+                        Image(systemName: "gear")
+                            .symbolRenderingMode(.monochrome)
+                            .foregroundStyle(.primary)
+                            .font(.title3)
+                    }
+                    .tint(.primary)
+                    .accessibilityLabel("Settings")
+                    .accessibilityHint("Opens colour theme settings")
+                }
+            }
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
+            }
             .onAppear {
                 let confTimeType = viewModel.confData.whereInConf()
                 guard confTimeType != .beforeConf, confTimeType != .afterConf else { return }

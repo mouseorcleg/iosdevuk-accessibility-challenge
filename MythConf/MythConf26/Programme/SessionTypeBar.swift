@@ -9,10 +9,11 @@ import SwiftUI
 /// repeated session-type SF Symbols. Communicates the session type via
 /// colour + icon pattern; VoiceOver hears it as the type's display name.
 struct SessionTypeBar: View {
+    @Environment(\.theme) private var theme
     let sessionType: SessionType
 
     var body: some View {
-        sessionType.color
+        theme.color(for: sessionType)
             .frame(height: 24)
             .overlay {
                 if !sessionType.iconName.isEmpty {
