@@ -18,12 +18,13 @@ struct ProgrammeView: View {
                     ForEach(days.indices, id: \.self) { index in
                         Text(dayLabel(for: days[index]))
                             .tag(index)
-                            .accessibilityLabel("Day \(index + 1), \(dayLabel(for: days[index]))")
                     }
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
+                .accessibilityLabel("Conference day")
+                .accessibilityValue(currentDayAccessibilityValue)
 
                 if !days.isEmpty {
                     DayScheduleView(sessions: days[selectedDayIndex])
@@ -48,6 +49,13 @@ struct ProgrammeView: View {
     private func dayLabel(for sessions: [Session]) -> String {
         guard let first = sessions.first else { return "" }
         return first.startTime.formatted(.dateTime.weekday(.abbreviated))
+    }
+
+    private var currentDayAccessibilityValue: String {
+        guard days.indices.contains(selectedDayIndex) else { return "" }
+        let day = days[selectedDayIndex]
+        let weekday = day.first?.startTime.formatted(.dateTime.weekday(.wide)) ?? ""
+        return "Day \(selectedDayIndex + 1), \(weekday)"
     }
 }
 
