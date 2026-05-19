@@ -1,0 +1,48 @@
+MythConf/MythConf26/Speakers/SocialLinksView.swift
+  bb9dda05c6a878ec 23,27
+MythConf/MythConf26/MySchedule/MyScheduleView.swift
+  bb9dda05c6a878ec 49,63-67,69
+MythConf/MythConf26/Speakers/TalkSummaryView.swift
+  bb9dda05c6a878ec 15-26,28-43
+MythConf/MythConf26/Speakers/SpeakersView.swift
+  bb9dda05c6a878ec 28
+MythConf/MythConf26/Programme/SessionTypeBar.swift
+  bb9dda05c6a878ec 13-14,16-18,22
+MythConf/MythConf26/Programme/BreakRowView.swift
+  bb9dda05c6a878ec 13-18,28-40,43-50,52-69
+MythConf/MythConf26/Speakers/SpeakerDetailView.swift
+  bb9dda05c6a878ec 10-15,26,33
+MythConf/MythConf26/Speakers/SpeakerRowView.swift
+  bb9dda05c6a878ec 11-12,15-18,24,34
+MythConf/MythConf26/Locations/LocationsView.swift
+  bb9dda05c6a878ec 10-18,27-32
+MythConf/MythConf26/Programme/ParallelSessionsRowView.swift
+  bb9dda05c6a878ec 10-15,19-21,26-37
+MythConf/MythConf26/Programme/TimeColumnView.swift
+  bb9dda05c6a878ec 8,13,22-40,49-50
+MythConf/MythConf26/Programme/SessionDetailView.swift
+  bb9dda05c6a878ec 19-28,30-46,69
+MythConf/MythConf26/Programme/ProgrammeView.swift
+  bb9dda05c6a878ec 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "f4aa1972c062e73a595cf66697fb3888ce81fc3a",
+  "prompts": {
+    "bb9dda05c6a878ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d480132f-e169-49f2-a241-07dd5ccaf0ee",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Maria Kharybina",
+      "messages": [],
+      "total_additions": 193,
+      "total_deletions": 57,
+      "accepted_lines": 193,
+      "overriden_lines": 0,
+      "messages_url": "https://gitai.gousto.info/cas/f68f69bc427ca7510b4a91a8533decc349807bfcbf84d0fd41bac3e934035c1c"
+    }
+  }
+}
