@@ -16,18 +16,35 @@ struct SessionDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 // Time and location
-                HStack {
-                    Label(session.timeRange, systemImage: "clock")
-                        .accessibilityLabel(session.timeRange)
-                    Spacer()
-                    NavigationLink(value: LocationNavigationID(value: talk.locationID)) {
-                        Label(viewModel.locationNameFrom(locationID: talk.locationID), systemImage: "mappin")
+                ViewThatFits {
+                    HStack {
+                        Label(session.timeRange, systemImage: "clock")
+                            .accessibilityLabel(session.timeRange)
+                        Spacer(minLength: 0)
+                        NavigationLink(value: LocationNavigationID(value: talk.locationID)) {
+                            Label(viewModel.locationNameFrom(locationID: talk.locationID), systemImage: "mappin")
+                                .labelStyle(.automatic)
+                        }
+                        .accessibilityHint("Opens location on map")
                     }
-                    .accessibilityHint("Opens location on map")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .padding(.bottom)
+
+                    VStack(alignment: .leading) {
+                        Label(session.timeRange, systemImage: "clock")
+                            .accessibilityLabel(session.timeRange)
+                            .padding(.bottom, 4)
+                        NavigationLink(value: LocationNavigationID(value: talk.locationID)) {
+                            Label(viewModel.locationNameFrom(locationID: talk.locationID), systemImage: "mappin")
+                                .labelStyle(.automatic)
+                        }
+                        .accessibilityHint("Opens location on map")
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .padding(.bottom)
                 }
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .padding(.bottom)
 
                 // Speakers
                 ForEach(talk.speakerIDs, id: \.self) { speakerID in
@@ -49,6 +66,7 @@ struct SessionDetailView: View {
         }
         .navigationTitle(talk.talkTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.background, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 FavouriteButtonView(talk: talk)

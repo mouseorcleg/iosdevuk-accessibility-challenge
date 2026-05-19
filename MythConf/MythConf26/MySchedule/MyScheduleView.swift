@@ -46,6 +46,7 @@ struct MyScheduleView: View {
                 }
             }
             .navigationTitle("My Schedule")
+            .toolbarBackground(.background, for: .navigationBar)
             .conferenceNavigationDestinations()
         }
     }
@@ -59,8 +60,13 @@ struct MyScheduleView: View {
 // MARK: - Preview
 
 #Preview {
+    let viewModel: ViewModel = {
+        let vm = ViewModel()
+        vm.favouriteIds = []
+        return vm
+    }()
     MyScheduleView()
-        .environment(ViewModel())
+        .environment(viewModel)
 }
 
 #Preview("With favourites") {

@@ -7,6 +7,15 @@ import SwiftUI
 
 struct LocationsView: View {
     @Environment(ViewModel.self) private var viewModel
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var isAccessibilitySize: Bool {
+        dynamicTypeSize >= .accessibility1
+    }
+
+    var isTwoLargestAccessibilitySizes: Bool {
+        dynamicTypeSize >= .accessibility4
+    }
 
     var body: some View {
         NavigationStack {
@@ -15,10 +24,12 @@ struct LocationsView: View {
                     VStack(alignment: .leading) {
                         Text(location.name)
                             .bold()
-                        Text(location.placeDescription)
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(2)
+                        if !isTwoLargestAccessibilitySizes {
+                            Text(location.placeDescription)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(isAccessibilitySize ? 3 : 2)
+                        }
                     }
                 }
             }

@@ -10,6 +10,12 @@ struct BreakRowView: View {
     @Environment(ViewModel.self) private var viewModel
     @Environment(\.theme) private var theme
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var isAccessibilitySize: Bool {
+        dynamicTypeSize >= .accessibility1
+    }
+
     let session: Session
 
     /// Tint opacity is bumped in Dark Mode so the themed colour stays
@@ -19,27 +25,49 @@ struct BreakRowView: View {
     }
 
     var body: some View {
-        HStack {
-            TimeColumnView(startTime: session.startTimeText, endTime: session.endTimeText)
+        if isAccessibilitySize {
+            VStack (alignment: .leading) {
+                TimeHorizontalColumnView(startTime: session.startTimeText, endTime: session.endTimeText)
 
-            VStack(alignment: .leading) {
-                Text(session.sessionType.displayName)
-                    .italic()
-                    .foregroundStyle(.primary)
-                if let talkID = session.contentIDs.first {
-                    Text(viewModel.locationNameFrom(talkID: talkID))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                VStack(alignment: .leading) {
+                    Text(session.sessionType.displayName)
+                        .italic()
+                        .foregroundStyle(.primary)
+                    if let talkID = session.contentIDs.first {
+                        Text(viewModel.locationNameFrom(talkID: talkID))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(theme.color(for: session.sessionType).opacity(tintOpacity))
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(breakAccessibilityLabel)
+        } else {
+            HStack {
+                TimeVerticalColumnView(startTime: session.startTimeText, endTime: session.endTimeText)
 
-            Spacer()
+                VStack(alignment: .leading) {
+                    Text(session.sessionType.displayName)
+                        .italic()
+                        .foregroundStyle(.primary)
+                    if let talkID = session.contentIDs.first {
+                        Text(viewModel.locationNameFrom(talkID: talkID))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                Spacer()
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(theme.color(for: session.sessionType).opacity(tintOpacity))
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(breakAccessibilityLabel)
         }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(theme.color(for: session.sessionType).opacity(tintOpacity))
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(breakAccessibilityLabel)
     }
 
     private var breakAccessibilityLabel: String {

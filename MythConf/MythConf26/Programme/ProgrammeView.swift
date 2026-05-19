@@ -38,7 +38,7 @@ struct ProgrammeView: View {
                     Button {
                         showingSettings = true
                     } label: {
-                        Image(systemName: "gear")
+                        Image(systemName: "paintbrush")
                             .symbolRenderingMode(.monochrome)
                             .foregroundStyle(.primary)
                             .font(.title3)

@@ -5,13 +5,12 @@
 
 import SwiftUI
 
-/// A fixed-width column showing a session's start and end times.
-struct TimeColumnView: View {
+struct TimeVerticalColumnView: View {
     let startTime: String
     let endTime: String
 
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack(alignment: .center) {
             Text(startTime)
                 .bold()
                 .monospacedDigit()
@@ -20,7 +19,25 @@ struct TimeColumnView: View {
                 .monospacedDigit()
         }
         .font(.caption)
-        .frame(width: 44, alignment: .trailing)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Session start time \(startTime), session end time \(endTime)")
+    }
+}
+
+struct TimeHorizontalColumnView: View {
+    let startTime: String
+    let endTime: String
+
+    var body: some View {
+        HStack(alignment: .center) {
+            Text(startTime)
+                .bold()
+            Text("⏤")
+            Text(endTime)
+            Spacer()
+        }
+        .monospacedDigit()
+        .font(.caption)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Session start time \(startTime), session end time \(endTime)")
     }
@@ -29,5 +46,6 @@ struct TimeColumnView: View {
 // MARK: - Preview
 
 #Preview {
-    TimeColumnView(startTime: "10:00", endTime: "11:00")
+    TimeVerticalColumnView(startTime: "10:00", endTime: "11:00")
+    TimeHorizontalColumnView(startTime: "10:00", endTime: "11:00")
 }

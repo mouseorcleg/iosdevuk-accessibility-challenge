@@ -7,6 +7,12 @@ import SwiftUI
 
 struct SpeakerDetailView: View {
     @Environment(ViewModel.self) private var viewModel
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var isAccessibilitySize: Bool {
+        dynamicTypeSize >= .accessibility1
+    }
+
     let speakerID: String
 
     private var speaker: Speaker { viewModel.speakerFrom(speakerID: speakerID) }
@@ -17,12 +23,14 @@ struct SpeakerDetailView: View {
                 // Header
                 HStack(alignment: .top) {
                     SpeakerPhotoView(speaker: speaker, size: 80)
+                        .padding(.top, isAccessibilitySize ? 6 : 0)
 
                     VStack(alignment: .leading) {
                         Text(speaker.name)
                             .accessibilityHidden(true)
                             .font(.title2)
                             .bold()
+                            .padding(isAccessibilitySize ? [.leading] : [.leading, .top])
                         if !speaker.social.isEmpty {
                             SocialLinksView(social: speaker.social)
                         }

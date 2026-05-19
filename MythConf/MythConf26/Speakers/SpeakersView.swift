@@ -25,6 +25,7 @@ struct SpeakersView: View {
             .searchable(text: $searchText, prompt: "Search speakers")
             .navigationTitle("Speakers")
             .conferenceNavigationDestinations()
+            .toolbarBackground(.background, for: .navigationBar)
         }
     }
 }

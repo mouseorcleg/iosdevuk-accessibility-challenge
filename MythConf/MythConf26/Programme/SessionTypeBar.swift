@@ -10,11 +10,16 @@ import SwiftUI
 /// colour + icon pattern; VoiceOver hears it as the type's display name.
 struct SessionTypeBar: View {
     @Environment(\.theme) private var theme
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let sessionType: SessionType
+    var isAccessibilitySize: Bool {
+        dynamicTypeSize >= .accessibility1
+    }
 
     var body: some View {
         theme.color(for: sessionType)
-            .frame(height: 24)
+            .frame(height: isAccessibilitySize ? 32 : 24)
             .overlay {
                 if !sessionType.iconName.isEmpty {
                     HStack(spacing: 0) {

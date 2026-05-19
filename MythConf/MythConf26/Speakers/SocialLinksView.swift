@@ -20,10 +20,11 @@ struct SocialLinksView: View {
                             .padding(.horizontal, 4)
                     }
                     .contentShape(.rect)
-                    .accessibilityLabel("Open \(item.socialType.capitalized) profile")
+                    .accessibilityLabel("Open \(item.socialType.capitalized)  profile")
                 }
             }
         }
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
     }
 
     private func iconName(for type: String) -> String {

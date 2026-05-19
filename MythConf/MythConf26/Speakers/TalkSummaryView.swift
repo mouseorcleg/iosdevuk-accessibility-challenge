@@ -12,19 +12,36 @@ struct TalkSummaryView: View {
     let session: Session
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(viewModel.talkTitleFrom(talkID: talkID))
-                .bold()
-            HStack {
-                Label(session.timeRange, systemImage: "clock")
-                Label(viewModel.locationNameFrom(talkID: talkID), systemImage: "mappin")
+        ViewThatFits {
+            VStack(alignment: .leading) {
+                Text(viewModel.talkTitleFrom(talkID: talkID))
+                    .bold()
+                HStack {
+                    Label(session.timeRange, systemImage: "clock")
+                    Label(viewModel.locationNameFrom(talkID: talkID), systemImage: "mappin")
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("\(session.timeRange), \(viewModel.locationNameFrom(talkID: talkID))")
             }
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel("\(session.timeRange), \(viewModel.locationNameFrom(talkID: talkID))")
+            .padding(.vertical, 4)
+
+            VStack(alignment: .leading) {
+                Text(viewModel.talkTitleFrom(talkID: talkID))
+                    .bold()
+                    .padding(.bottom, 4)
+                VStack(alignment: .leading, spacing: 4) {
+                    Label(session.timeRange, systemImage: "clock")
+                    Label(viewModel.locationNameFrom(talkID: talkID), systemImage: "mappin")
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("\(session.timeRange), \(viewModel.locationNameFrom(talkID: talkID))")
+            }
+            .padding(.vertical, 4)
         }
-        .padding(.vertical, 4)
     }
 }
 
