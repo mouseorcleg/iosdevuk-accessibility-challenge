@@ -20,7 +20,7 @@ struct SocialLinksView: View {
                             .padding(.horizontal, 4)
                     }
                     .contentShape(.rect)
-                    .accessibilityLabel("Open \(item.socialType.capitalized)  profile")
+                    .accessibilityLabel("Open \(item.socialType.capitalized) profile")
                 }
             }
         }

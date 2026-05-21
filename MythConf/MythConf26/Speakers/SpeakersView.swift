@@ -21,6 +21,7 @@ struct SpeakersView: View {
                 NavigationLink(value: SpeakerNavigationID(value: speaker.id)) {
                     SpeakerRowView(speakerID: speaker.id)
                 }
+                .accessibilityHint("Opens speaker profile")
             }
             .searchable(text: $searchText, prompt: "Search speakers")
             .navigationTitle("Speakers")

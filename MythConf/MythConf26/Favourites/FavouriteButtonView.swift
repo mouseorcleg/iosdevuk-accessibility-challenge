@@ -8,6 +8,7 @@ import SwiftUI
 /// A button that toggles a talk as a favourite.
 struct FavouriteButtonView: View {
     @Environment(ViewModel.self) private var viewModel
+    @Environment(\.theme) private var theme
     let talk: Talk
 
     var body: some View {
@@ -19,9 +20,10 @@ struct FavouriteButtonView: View {
             }
         } label: {
             Image(systemName: viewModel.isFavourite(talk: talk) ? "star.fill" : "star")
-                .foregroundStyle(viewModel.isFavourite(talk: talk) ? .yellow : .secondary)
+                .foregroundStyle(viewModel.isFavourite(talk: talk) ? theme.accent : Color.secondary)
         }
-        .accessibilityLabel(viewModel.isFavourite(talk: talk) ? "Favourite! Remove from favourites?" : "Add to favourites")
+        .accessibilityLabel(viewModel.isFavourite(talk: talk) ? "Remove from favourites" : "Add to favourites")
+        .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.8), trigger: viewModel.isFavourite(talk: talk))
     }
 }
 

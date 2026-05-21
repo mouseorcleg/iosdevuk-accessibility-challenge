@@ -32,9 +32,11 @@ struct LocationsView: View {
                         }
                     }
                 }
+                .accessibilityHint("Opens location detail")
             }
             .navigationTitle("Locations")
             .conferenceNavigationDestinations()
+            .toolbarBackground(.background, for: .navigationBar)
         }
     }
 }

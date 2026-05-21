@@ -43,6 +43,7 @@ struct ParallelTalkCardView: View {
                     HStack {
                         Spacer()
                         FavouriteButtonView(talk: talk)
+                            .accessibilityHidden(true)
                     }
                 }
                 .padding()

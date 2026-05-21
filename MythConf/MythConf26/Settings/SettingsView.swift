@@ -23,6 +23,7 @@ struct SettingsView: View {
                     ForEach(Theme.allCases) { theme in
                         themeRow(for: theme)
                     }
+                    .sensoryFeedback(.selection, trigger: selectedTheme)
                 } header: {
                     Text("Colour Theme")
                         .accessibilityAddTraits(.isHeader)
@@ -56,6 +57,7 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                     swatches(for: theme)
                         .padding(.top, 2)
+                        .accessibilityHidden(true)
                 }
 
                 Spacer()
