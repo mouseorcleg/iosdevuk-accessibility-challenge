@@ -1,0 +1,11 @@
+MythConf/MythConf26/Model/Theme.swift
+  ai_agent 47-58
+MythConf/MythConf26/Programme/ParallelTalkCardView.swift
+  ai_agent 16-17,19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "703772da59c5e50f41a9eccfa83bf9dd9a083711",
+  "prompts": {}
+}
