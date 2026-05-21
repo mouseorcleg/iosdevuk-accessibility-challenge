@@ -13,10 +13,10 @@ struct ParallelTalkCardView: View {
     let talkID: UUID
     let session: Session
 
-    /// Tint opacity is bumped in Dark Mode so the themed colour stays
-    /// visible against a near-black background instead of fading out.
+    /// Tint opacity comes from the active theme so each palette can control
+    /// how strongly session colours bleed into the card background.
     private var tintOpacity: Double {
-        colorScheme == .dark ? 0.25 : 0.1
+        colorScheme == .dark ? theme.cardTintOpacity.dark : theme.cardTintOpacity.light
     }
 
     var body: some View {

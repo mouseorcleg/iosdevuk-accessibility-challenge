@@ -44,6 +44,18 @@ enum Theme: String, CaseIterable, Identifiable, Codable {
         }
     }
 
+    /// Opacity of the session-type colour tint applied to talk card backgrounds.
+    /// High Contrast uses a much higher value so the session category is strongly
+    /// visible without relying on the SessionTypeBar alone.
+    var cardTintOpacity: (light: Double, dark: Double) {
+        switch self {
+        case .default:      (0.10, 0.25)
+        case .highContrast: (0.22, 0.45)
+        case .calm:         (0.10, 0.25)
+        case .focus:        (0.13, 0.30)
+        }
+    }
+
     /// App-wide tint colour, applied via `.tint(...)` at the app root.
     var accent: Color {
         switch self {
